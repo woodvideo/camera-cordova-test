@@ -33,12 +33,12 @@
 		
 		function makephoto(){
 			navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-			destinationType: Camera.DestinationType.DATA_URL, saveToPhotoAlbum: true
+			destinationType: 1, saveToPhotoAlbum: true
 			});
 		}
 		function onSuccess(imageData) {
 			var image = document.getElementById('myImage');
-			image.src = "data:image/jpeg;base64," + imageData;
+			image.src = imageData;
 			document.getElementById("text1").innerHTML = imageData;
 		}
 		function onFail(message) {
