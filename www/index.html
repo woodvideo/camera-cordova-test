@@ -33,7 +33,7 @@
 		
 		function makephoto(){
 			navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-			destinationType: 1, saveToPhotoAlbum: true
+			destinationType: 1, saveToPhotoAlbum: true, correctOrientation: true
 			});
 		}
 		function onSuccess(imageData) {
