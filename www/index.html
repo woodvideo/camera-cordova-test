@@ -43,20 +43,17 @@
 </head>
 
 <body>
-<div id="camera">
-    <button class="camera-control" onclick="capturePhoto();">Capture Photo</button>
- 
-    <div style="text-align:center;margin:20px;">
-        <img id="cameraPic" src="" style="width:auto;height:120px;"></img>
-    </div>
-</div>
+
 <script type="text/javascript">
 	function capturePhoto(){
 		navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60});
 	}
 function uploadPhoto(data){
-// this is where you would send the image file to server
 
+	var ft = new FileTransfer();
+	ft.upload(imageURI, "http://dep.woodvideo.nl/upload.php", win, fail);
+// this is where you would send the image file to server
+var cameraPic = document.getElementById('cameraPic');
 	cameraPic.src = "data:image/jpeg;base64," + data;
 	// Successful upload to the server
 	navigator.notification.alert(
@@ -80,21 +77,39 @@ function uploadPhoto(data){
 		);
 
 	} 
+}
 
 
 
 }
+
+function win(r) {
+	console.log("Code = " + r.responseCode);
+	console.log("Response = " + r.response);
+	console.log("Sent = " + r.bytesSent);
+	alert(r.response);
+}
+
+function fail(error) {
+	alert("An error has occurred: Code = " = error.code);
+}
+
 
 function okay(){
 	// Do something
 }
 
 </script>
-
+<div id="camera">
+    <button class="camera-control" onclick="capturePhoto();">Capture Photo</button>
+ 
+    <div style="text-align:center;margin:20px;">
+        <img id="cameraPic" src="" style="width:auto;height:120px;"></img>
+    </div>
+</div>
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/foto.js"></script>
-	 <a href="JavaScript:openCamera()">Open camera</a>
 
 </body>
 
