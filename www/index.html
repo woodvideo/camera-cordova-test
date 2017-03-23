@@ -16,14 +16,14 @@
 	<script type="text/javascript">
 		function takephoto(){
 			navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-			destinationType: Camera.DestinationType.DATA_URL,
+			destinationType: 1,
 			sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM
 			});
 		}
 		
 		function onSuccess(imageData) {
 			var image = document.getElementById('myImage');
-			image.src = "data:image/jpeg;base64," + imageData;
+			image.src = imageData;
 			document.getElementById("text1").innerHTML = imageData;
 		}
 		
@@ -44,13 +44,48 @@
 		function onFail(message) {
 			alert('Failed because: ' + message);
 		}
+
+		function uploadPhoto(imageURI) {
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+ 
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+ 
+            options.params = params;
+            options.chunkedMode = false;
+ 
+            var ft = new FileTransfer();
+            ft.upload(imageURI, "http://dep.woodvideo.nl/foto/upload.php", gelukt, mislukt, options);
+        }		
+        
+		function gelukt(r) {
+            console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+            alert(r.response);
+        }
+ 
+        function mislukt(error) {
+            alert("An error has occurred: Code = " = error.code);
+        }
+
+
+
+
+
+		
 	</script>
 
 <div id="camera">
-	<input type="button" onclick="takephoto()" value="Load Photo"/>
-	<input type="button" onclick="makephoto()" value="Take Photo"/>
-	<img src="" id="myImage" style="height:100%; max-height:200px;"/>
-	<p id="text1"></p>
+	<input type="button" onclick="takephoto()" value="Laad Foto"/><br>
+	<input type="button" onclick="makephoto()" value="Maak Foto"/><br>
+	<img src="" id="myImage" style="height:100%; max-height:300px;"/><br>
+	<p id="text1"></p><br>
+	<input type="button" onclick="uploadPhoto()" value="Uploaden"/><br>
 </div>
 
 </body>
