@@ -44,14 +44,14 @@
 
 <body>
 
+
 <script type="text/javascript">
 	function capturePhoto(){
 		navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60});
 	}
 function uploadPhoto(data){
 
-	var ft = new FileTransfer();
-	ft.upload(imageURI, "http://dep.woodvideo.nl/upload.php", win, fail);
+
 // this is where you would send the image file to server
 var cameraPic = document.getElementById('cameraPic');
 	cameraPic.src = "data:image/jpeg;base64," + data;
@@ -83,16 +83,7 @@ var cameraPic = document.getElementById('cameraPic');
 
 }
 
-function win(r) {
-	console.log("Code = " + r.responseCode);
-	console.log("Response = " + r.response);
-	console.log("Sent = " + r.bytesSent);
-	alert(r.response);
-}
 
-function fail(error) {
-	alert("An error has occurred: Code = " = error.code);
-}
 
 
 function okay(){
@@ -108,6 +99,12 @@ function okay(){
     </div>
 </div>
 
+=======
+    <div class="app">
+        <h1>TESTER</h1>
+        </div>
+    </div>
+>>>>>>> parent of 80c9a10... btn added
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/foto.js"></script>
 
