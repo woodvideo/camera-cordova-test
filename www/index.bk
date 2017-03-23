@@ -46,13 +46,14 @@
 
 
 <script type="text/javascript">
-function capturePhoto(){
+	function capturePhoto(){
 		navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60});
-}
-
+	}
 function uploadPhoto(data){
-// this is where you would send the image file to server
 
+
+// this is where you would send the image file to server
+var cameraPic = document.getElementById('cameraPic');
 	cameraPic.src = "data:image/jpeg;base64," + data;
 	// Successful upload to the server
 	navigator.notification.alert(
@@ -64,7 +65,7 @@ function uploadPhoto(data){
 
 	// upload has failed Fail
 
-	/* 
+	
 
 	if (failedToUpload){
 
@@ -76,10 +77,14 @@ function uploadPhoto(data){
 		);
 
 	} 
-	*/
+}
+
 
 
 }
+
+
+
 
 function okay(){
 	// Do something
@@ -89,10 +94,20 @@ function okay(){
 <div id="camera">
     <button class="camera-control" onclick="capturePhoto();">Capture Photo</button>
  
-    <div style="text-align:center;margin:40px;">
+    <div style="text-align:center;margin:20px;">
         <img id="cameraPic" src="" style="width:auto;height:120px;"></img>
     </div>
 </div>
+
+=======
+    <div class="app">
+        <h1>TESTER</h1>
+        </div>
+    </div>
+>>>>>>> parent of 80c9a10... btn added
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/foto.js"></script>
+
 </body>
+
 </html>
