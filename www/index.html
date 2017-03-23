@@ -12,12 +12,6 @@
 </head>
 
 <body>
-
-<div id="camera">
-	<input type="button" onclick="takephoto()" value="Load Photo"/>
-	<input type="button" onclick="makephoto()" value="Take Photo"/>
-	<img src="" id="myImage" height="200px" width="200px"/>
-</div>
 <script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript">
 		function takephoto(){
@@ -39,7 +33,7 @@
 		
 		function makephoto(){
 			navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-			destinationType: Camera.DestinationType.DATA_URL, saveToPhotoAlbum: true, allowEdit : true
+			destinationType: Camera.DestinationType.DATA_URL, saveToPhotoAlbum: true
 			});
 		}
 		function onSuccess(imageData) {
@@ -51,5 +45,13 @@
 			alert('Failed because: ' + message);
 		}
 	</script>
+
+<div id="camera">
+	<input type="button" onclick="takephoto()" value="Load Photo"/>
+	<input type="button" onclick="makephoto()" value="Take Photo"/>
+	<img src="" id="myImage" height="200px" width="200px"/>
+	<p id="text1"></p>
+</div>
+
 </body>
 </html>
