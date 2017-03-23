@@ -29,10 +29,27 @@
 		function onFail(message) {
 			alert('Failed because: ' + message);
 		}
+		
+		function makephoto(){
+navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+destinationType: Camera.DestinationType.DATA_URL
+});
+}
+function onSuccess(imageData) {
+var image = document.getElementById('myImage');
+image.src = "data:image/jpeg;base64," + imageData;
+document.getElementById("text1").innerHTML = imageData;
+}
+function onFail(message) {
+alert('Failed because: ' + message);
+}
+		
+		
 	</script>
 <div id="camera">
 
-<input type="button" onclick="takephoto()" value="Take Photo Image Base64"/>
+<input type="button" onclick="takephoto()" value="Load Photo"/>
+<input type="button" onclick="makephoto()" value="Take Photo"/>
 <img src="" id="myImage" height="200px" width="200px"/>
 </div>
     <script type="text/javascript" src="cordova.js"></script>
