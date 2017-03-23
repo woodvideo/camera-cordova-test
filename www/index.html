@@ -32,7 +32,7 @@
 		
 		function makephoto(){
 navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-destinationType: Camera.DestinationType.DATA_URL
+destinationType: Camera.DestinationType.DATA_URL, saveToPhotoAlbum: true
 });
 }
 function onSuccess(imageData) {
