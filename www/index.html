@@ -14,10 +14,9 @@
 <body>
 <script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript">
-	var fotoLok
 		function takephoto(){
 			navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-			destinationType: 1,
+			destinationType: navigator.camera.DestinationType.FILE_URI,
 			sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM
 			});
 		}
@@ -25,7 +24,6 @@
 		function onSuccess(imageData) {
 			var image = document.getElementById('myImage');
 			image.src = imageData;
-			fotoLok = imageData;
 			document.getElementById("text1").innerHTML = imageData;
 		}
 		
@@ -34,8 +32,8 @@
 		}
 		
 		function makephoto(){
-			navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-			destinationType: 1, saveToPhotoAlbum: true, correctOrientation: true
+			navigator.camera.getPicture(onSuccess, onFail, gaopladen, { quality: 50,
+			destinationType: navigator.camera.DestinationType.FILE_URI, saveToPhotoAlbum: true, correctOrientation: true
 			});
 		}
 		function onSuccess(imageData) {
@@ -46,9 +44,12 @@
 		function onFail(message) {
 			alert('Failed because: ' + message);
 		}
-
+		function gaopladen (imageURI){
+			alert(imageURI)
+		}
 		
 	</script>
+	
 	<script type="text/javascript">
 		 function getImage() {
 		 navigator.camera.getPicture(uploadPhoto, function(message) {
