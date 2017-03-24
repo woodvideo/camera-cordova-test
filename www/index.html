@@ -63,6 +63,7 @@
 		 options.chunkedMode = false;
 
 		var ft = new FileTransfer();
+		alert("Begin met uploaden")
 		 ft.upload(imageURI, "http://dep.woodvideo.nl/foto/upload.php", function(result){
 		 console.log(JSON.stringify(result));
 		 }, function(error){
