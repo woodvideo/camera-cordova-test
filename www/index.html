@@ -47,7 +47,6 @@
 
 		
 	</script>
-	
 	<script type="text/javascript">
 		 function getImage() {
 		 navigator.camera.getPicture(uploadPhoto, function(message) {
@@ -90,6 +89,24 @@
 	<img src="" id="myImage" style="height:100%; max-height:300px;"/><br>
 	<p id="text1"></p><br>
 	<input type="button" onclick="getImage()" value="Uploaden"/><br>
+</div>
+<div id="gallery">
+<script>
+var dir = "http://dep.woodvideo.nl/foto/upload/";
+var fileextension = ".jpg";
+$.ajax({
+    //This will retrieve the contents of the folder if the folder is configured as 'browsable'
+    url: dir,
+    success: function (data) {
+        //List all .png file names in the page
+        $(data).find("a:contains(" + fileextension + ")").each(function () {
+            var filename = this.href.replace(window.location.host, "").replace("http://", "");
+            $("body").append("<img src='" + dir + filename + "'>");
+        });
+    }
+});
+</script>
+
 </div>
 
 </body>
