@@ -49,6 +49,8 @@
 		}
 		
 		function uploadPhoto(imageURI) {
+		alert (fotoLok)
+		alert (imageURI)
 		 var options = new FileUploadOptions();
 		 options.fileKey = "file";
 		 options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
@@ -75,7 +77,7 @@
 	<input type="button" onclick="makephoto()" value="Maak Foto"/><br>
 	<img src="" id="myImage" style="height:100%; max-height:300px;"/><br>
 	<p id="text1"></p><br>
-	<input type="button" onclick="getImage()" value="Uploaden"/><br>
+	<input type="button" onclick="uploadPhoto()" value="Uploaden"/><br>
 </div>
 
 </body>
