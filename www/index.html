@@ -41,16 +41,26 @@
 		function onSuccess(imageData) {
 			var image = document.getElementById('myImage');
 			image.src = imageData;
-			fotoLok - imageData;
 			document.getElementById("text1").innerHTML = imageData;
 		}
 		function onFail(message) {
 			alert('Failed because: ' + message);
 		}
+
 		
+	</script>
+	<script type="text/javascript">
+		 function getImage() {
+		 navigator.camera.getPicture(uploadPhoto, function(message) {
+		 alert('get picture failed');
+		 }, {
+		 quality: 100,
+		 destinationType: navigator.camera.DestinationType.FILE_URI,
+		 sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+		 });
+		}
+
 		function uploadPhoto(imageURI) {
-		alert (imageData)
-		alert (imageURI)
 		 var options = new FileUploadOptions();
 		 options.fileKey = "file";
 		 options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
@@ -63,14 +73,12 @@
 		 options.chunkedMode = false;
 
 		var ft = new FileTransfer();
-		alert("Begin met uploaden")
 		 ft.upload(imageURI, "http://dep.woodvideo.nl/foto/upload.php", function(result){
 		 console.log(JSON.stringify(result));
 		 }, function(error){
 		 console.log(JSON.stringify(error));
 		 }, options);
 		 }
-		
 	</script>
 
 <div id="camera">
@@ -78,7 +86,7 @@
 	<input type="button" onclick="makephoto()" value="Maak Foto"/><br>
 	<img src="" id="myImage" style="height:100%; max-height:300px;"/><br>
 	<p id="text1"></p><br>
-	<input type="button" onclick="uploadPhoto()" value="Uploaden"/><br>
+	<input type="button" onclick="getImage()" value="Uploaden"/><br>
 </div>
 
 </body>
