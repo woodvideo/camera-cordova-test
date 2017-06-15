@@ -13,7 +13,7 @@
 
 <body>
 <script type="text/javascript" src="cordova.js"></script>
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 		function takephoto(){
 			navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
 			destinationType: navigator.camera.DestinationType.FILE_URI,
@@ -46,7 +46,7 @@
 		}
 
 		
-	</script>
+	</script> -->
 	<script type="text/javascript">
 		 function getImage() {
 		 navigator.camera.getPicture(uploadPhoto, function(message) {
@@ -91,21 +91,8 @@
 	<input type="button" onclick="getImage()" value="Uploaden"/><br>
 </div>
 <div id="gallery">
-<script>
-var dir = "http://dep.woodvideo.nl/foto/upload/";
-var fileextension = ".jpg";
-$.ajax({
-    //This will retrieve the contents of the folder if the folder is configured as 'browsable'
-    url: dir,
-    success: function (data) {
-        //List all .png file names in the page
-        $(data).find("a:contains(" + fileextension + ")").each(function () {
-            var filename = this.href.replace(window.location.host, "").replace("http://", "");
-            $("body").append("<img src='" + dir + filename + "'>");
-        });
-    }
-});
-</script>
+
+
 
 </div>
 
